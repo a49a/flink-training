@@ -1,4 +1,4 @@
-package me.train.flink.udf;
+package me.training.flink.udf;
 
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.common.typeinfo.Types;

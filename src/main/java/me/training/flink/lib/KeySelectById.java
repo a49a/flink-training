@@ -1,4 +1,4 @@
-package me.train.flink.lib;
+package me.training.flink.lib;
 
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.tuple.Tuple2;

@@ -1,4 +1,4 @@
-package me.train.flink.lib;
+package me.training.flink.state;
 
 import org.apache.flink.api.common.state.ListState;
 import org.apache.flink.api.common.state.ListStateDescriptor;

@@ -1,4 +1,4 @@
-package me.train.flink;
+package me.training.flink;
 
 import org.apache.flink.api.common.typeinfo.BasicTypeInfo;
 import org.apache.flink.api.common.typeinfo.TypeInformation;

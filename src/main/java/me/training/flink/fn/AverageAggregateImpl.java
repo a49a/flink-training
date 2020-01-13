@@ -1,4 +1,4 @@
-package me.train.flink.fn;
+package me.training.flink.fn;
 
 import org.apache.flink.api.common.functions.AggregateFunction;
 import org.apache.flink.api.java.tuple.Tuple2;

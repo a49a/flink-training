@@ -1,4 +1,4 @@
-package me.train.flink.lib;
+package me.training.flink.lib;
 
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 import org.apache.flink.streaming.connectors.kafka.KafkaSerializationSchema;

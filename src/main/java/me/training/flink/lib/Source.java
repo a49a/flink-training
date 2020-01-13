@@ -1,6 +1,6 @@
-package me.train.flink.lib;
+package me.training.flink.lib;
 
-import me.train.flink.ConsumerStringDeserializationSchema;
+import me.training.flink.ConsumerStringDeserializationSchema;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 
 import java.util.Properties;

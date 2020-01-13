@@ -1,4 +1,4 @@
-package me.train.flink.udf;
+package me.training.flink.udf;
 
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.table.functions.TableFunction;

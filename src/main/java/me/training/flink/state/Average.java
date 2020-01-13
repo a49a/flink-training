@@ -1,4 +1,4 @@
-package me.train.flink.lib;
+package me.training.flink.state;
 
 import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.api.common.state.StateTtlConfig;
@@ -33,11 +33,13 @@ public class Average extends RichMapFunction<Tuple2<String, Integer>, Double> {
                         "sum",
                         TypeInformation.of(new TypeHint<Tuple2<Integer, Integer>>() {})
                 );
+
         StateTtlConfig ttlConfig = StateTtlConfig
                 .newBuilder(Time.seconds(1))
                 .setUpdateType(StateTtlConfig.UpdateType.OnCreateAndWrite)
                 .setStateVisibility(StateTtlConfig.StateVisibility.NeverReturnExpired)
                 .build();
+        descriptor.enableTimeToLive(ttlConfig);
 
         sum = getRuntimeContext().getState(descriptor);
     }

@@ -1,4 +1,4 @@
-package me.train.flink.lib;
+package me.training.flink.lib;
 
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.CheckpointConfig;

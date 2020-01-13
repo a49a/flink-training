@@ -1,4 +1,4 @@
-package me.train.flink.lib;
+package me.training.flink.state;
 
 import org.apache.flink.streaming.api.checkpoint.ListCheckpointed;
 import org.apache.flink.streaming.api.functions.source.RichParallelSourceFunction;

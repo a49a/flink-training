@@ -1,4 +1,4 @@
-package me.train.flink.side;
+package me.training.flink.side;
 
 import java.util.function.Consumer;
 

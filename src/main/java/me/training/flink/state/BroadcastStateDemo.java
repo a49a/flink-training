@@ -1,6 +1,6 @@
-package me.train.flink.state;
+package me.training.flink.state;
 
-import me.train.flink.lib.EnvUtils;
+import me.training.flink.lib.EnvUtils;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.state.MapStateDescriptor;
 import org.apache.flink.api.common.typeinfo.Types;
