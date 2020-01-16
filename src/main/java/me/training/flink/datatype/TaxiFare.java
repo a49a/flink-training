@@ -21,6 +21,8 @@ public class TaxiFare implements Serializable {
     public float tolls;
     public float totalFare;
 
+    public TaxiFare() {}
+
     public TaxiFare(long rideId, long taxiId, long driverId, DateTime startTime, String paymentType, float tip, float tolls, float totalFare) {
         this.rideId = rideId;
         this.taxiId = taxiId;
@@ -44,6 +46,32 @@ public class TaxiFare implements Serializable {
         sb.append(totalFare);
 
         return sb.toString();
+    }
+
+    public static TaxiFare fromString(String line) {
+
+        String[] tokens = line.split(",");
+        if (tokens.length != 8) {
+            throw new RuntimeException("Invalid record: " + line);
+        }
+
+        TaxiFare ride = new TaxiFare();
+
+        try {
+            ride.rideId = Long.parseLong(tokens[0]);
+            ride.taxiId = Long.parseLong(tokens[1]);
+            ride.driverId = Long.parseLong(tokens[2]);
+            ride.startTime = DateTime.parse(tokens[3], timeFormatter);
+            ride.paymentType = tokens[4];
+            ride.tip = tokens[5].length() > 0 ? Float.parseFloat(tokens[5]) : 0.0f;
+            ride.tolls = tokens[6].length() > 0 ? Float.parseFloat(tokens[6]) : 0.0f;
+            ride.totalFare = tokens[7].length() > 0 ? Float.parseFloat(tokens[7]) : 0.0f;
+
+        } catch (NumberFormatException nfe) {
+            throw new RuntimeException("Invalid record: " + line, nfe);
+        }
+
+        return ride;
     }
 
     @Override

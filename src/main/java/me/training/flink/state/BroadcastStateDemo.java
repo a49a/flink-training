@@ -42,12 +42,12 @@ public class BroadcastStateDemo {
 
         BroadcastStream<Pattern> bcedPatterns = patterns.broadcast(bcStateDescriptor);
 
-        actionsByUser.connect(bcedPatterns).process();
+//        actionsByUser.connect(bcedPatterns).process();
     }
 
-    public static class PatternEvaluator extends KeyedBroadcastProcessFunction<Long, Action, Pattern, Tuple2<Long, Parttern>> {
-
-    }
+//    public static class PatternEvaluator extends KeyedBroadcastProcessFunction<Long, Action, Pattern, Tuple2<Long, Parttern>> {
+//
+//    }
 }
 
 class Action {
