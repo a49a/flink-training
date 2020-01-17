@@ -1,4 +1,4 @@
-package me.training.flink.basics;
+package me.training.flink.state;
 
 import me.training.flink.datatype.TaxiFare;
 import me.training.flink.datatype.TaxiRide;

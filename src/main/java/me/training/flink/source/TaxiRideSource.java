@@ -23,9 +23,9 @@ public class TaxiRideSource implements SourceFunction<TaxiRide> {
     private transient InputStream gzipStream;
     private transient BufferedReader reader;
 
-    public TaxiRideSource(String dataFilePath, int maxEventDelaySecs, int servingSpeedFactor) throws Exception {
+    public TaxiRideSource(String dataFilePath, int maxEventDelaySecs, int servingSpeedFactor) {
         if (maxEventDelaySecs < 0) {
-            throw new IllegalAccessException("Max event delay must be positive");
+            throw new IllegalArgumentException("Max event delay must be positive");
         }
         this.dataFilePath = dataFilePath;
         this.maxDelayMsecs = maxEventDelaySecs * 1000;
