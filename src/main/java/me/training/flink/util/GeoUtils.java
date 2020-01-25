@@ -1,5 +1,11 @@
 package me.training.flink.util;
 
+import org.apache.flink.api.common.typeinfo.TypeInformation;
+import org.apache.flink.api.common.typeinfo.Types;
+import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.api.java.typeutils.TupleTypeInfo;
+import org.apache.flink.table.functions.ScalarFunction;
+
 public class GeoUtils {
     // geo boundaries of the area of NYC
     public static double LON_EAST = -73.7;
@@ -33,5 +39,47 @@ public class GeoUtils {
         int yIndex = (int)Math.floor((LAT_NORTH - lat) / DELTA_LAT);
 
         return xIndex + (yIndex * NUMBER_OF_GRID_X);
+    }
+
+    public static float getGridCellCenterLon(int gridCellId) {
+
+        int xIndex = gridCellId % NUMBER_OF_GRID_X;
+
+        return (float)(Math.abs(LON_WEST) - (xIndex * DELTA_LON) - (DELTA_LON / 2)) * -1.0f;
+    }
+
+    public static float getGridCellCenterLat(int gridCellId) {
+
+        int xIndex = gridCellId % NUMBER_OF_GRID_X;
+        int yIndex = (gridCellId - xIndex) / NUMBER_OF_GRID_X;
+
+        return (float)(LAT_NORTH - (yIndex * DELTA_LAT) - (DELTA_LAT / 2));
+
+    }
+
+    public static class IsInNYC extends ScalarFunction {
+        public boolean eval(float lon, float lat) {
+            return isInNYC(lon, lat);
+        }
+    }
+
+    public static class ToCellId extends ScalarFunction {
+        public int eval(float lon, float lat) {
+            return GeoUtils.mapToGridCell(lon, lat);
+        }
+    }
+
+    public static class ToCoords extends ScalarFunction {
+        public Tuple2<Float, Float> eval(int cellId) {
+            return Tuple2.of(
+                    GeoUtils.getGridCellCenterLon(cellId),
+                    GeoUtils.getGridCellCenterLat(cellId)
+            );
+        }
+
+        @Override
+        public TypeInformation getResultType(Class[] signature) {
+            return new TupleTypeInfo<>(Types.FLOAT, Types.FLOAT);
+        }
     }
 }

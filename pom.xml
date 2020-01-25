@@ -91,7 +91,7 @@
       <version>${flink.version}</version>
     </dependency>
 
-    <!--SQL-->
+    <!--IDE-->
     <dependency>
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-table-planner_${scala.bin.version}</artifactId>
@@ -107,6 +107,13 @@
     <dependency>
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-table-common</artifactId>
+      <version>${flink.version}</version>
+    </dependency>
+
+    <!--Metrics-->
+    <dependency>
+      <groupId>org.apache.flink</groupId>
+      <artifactId>flink-metrics-dropwizard</artifactId>
       <version>${flink.version}</version>
     </dependency>
 
