@@ -45,27 +45,29 @@ public class BroadcastStateDemo {
 //        actionsByUser.connect(bcedPatterns).process();
     }
 
+    static class Action {
+        public Long userId;
+        public String action;
+
+        public Action(Long userId, String action) {
+            this.userId = userId;
+            this.action = action;
+        }
+    }
+
+    static class Pattern {
+        public String firstAction;
+        public String secondAction;
+
+        public Pattern(String firstAction, String secondAction) {
+            this.firstAction = firstAction;
+            this.secondAction =secondAction;
+        }
+    }
+
 //    public static class PatternEvaluator extends KeyedBroadcastProcessFunction<Long, Action, Pattern, Tuple2<Long, Parttern>> {
 //
 //    }
 }
 
-class Action {
-    public Long userId;
-    public String action;
 
-    public Action(Long userId, String action) {
-        this.userId = userId;
-        this.action = action;
-    }
-}
-
-class Pattern {
-    public String firstAction;
-    public String secondAction;
-
-    public Pattern(String firstAction, String secondAction) {
-        this.firstAction = firstAction;
-        this.secondAction =secondAction;
-    }
-}

@@ -1,4 +1,4 @@
-package me.training.flink.window;
+package me.training.flink.window.watermark;
 
 import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor;
 

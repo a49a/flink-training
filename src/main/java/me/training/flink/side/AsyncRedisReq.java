@@ -9,6 +9,8 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.async.ResultFuture;
 import org.apache.flink.streaming.api.functions.async.RichAsyncFunction;
+import org.apache.flink.streaming.api.windowing.triggers.CountTrigger;
+import org.apache.flink.streaming.api.windowing.triggers.PurgingTrigger;
 
 import java.util.Collections;
 import java.util.Map;
@@ -38,7 +40,7 @@ public class AsyncRedisReq extends RichAsyncFunction<String, String> {
             redisClient.shutdown();
         }
     }
-
+    CountTrigger
     @Override
     public void asyncInvoke(String input, final ResultFuture<String> resultFuture) throws Exception {
         String id = "";

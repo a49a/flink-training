@@ -15,7 +15,7 @@ public class Average extends RichMapFunction<Tuple2<String, Integer>, Double> {
     private transient ValueState<Tuple2<Integer, Integer>> sum;
 
     @Override
-    public Double map(Tuple2<String, Integer> input)  throws Exception {
+    public Double map(Tuple2<String, Integer> input) throws Exception {
         Tuple2<Integer, Integer> currentSum = sum.value();
         if (currentSum == null) {
             currentSum = Tuple2.of(0, 0);
@@ -38,6 +38,8 @@ public class Average extends RichMapFunction<Tuple2<String, Integer>, Double> {
                 .newBuilder(Time.seconds(1))
                 .setUpdateType(StateTtlConfig.UpdateType.OnCreateAndWrite)
                 .setStateVisibility(StateTtlConfig.StateVisibility.NeverReturnExpired)
+                .cleanupIncrementally(6, false)
+        .cleanupInBackground()
                 .build();
         descriptor.enableTimeToLive(ttlConfig);
 
