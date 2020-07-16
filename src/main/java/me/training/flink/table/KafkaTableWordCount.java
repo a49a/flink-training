@@ -29,6 +29,7 @@ public class KafkaTableWordCount {
                     new Csv()
                 .fieldDelimiter(',')
                 .lineDelimiter("\n")
+                    .deriveSchema()
             )
                 .withSchema(
                         new Schema()

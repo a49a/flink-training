@@ -40,7 +40,6 @@ public class AsyncRedisReq extends RichAsyncFunction<String, String> {
             redisClient.shutdown();
         }
     }
-    CountTrigger
     @Override
     public void asyncInvoke(String input, final ResultFuture<String> resultFuture) throws Exception {
         String id = "";

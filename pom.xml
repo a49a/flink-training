@@ -25,7 +25,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <scala.bin.version>2.12</scala.bin.version>
-    <flink.version>1.9.0</flink.version>
+    <flink.version>1.10.1</flink.version>
   </properties>
 
   <dependencies>
